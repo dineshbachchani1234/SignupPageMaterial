@@ -1,0 +1,68 @@
+  
+  .navbar-brand {
+    padding-top: .95rem;
+    padding-bottom: .95rem;
+    font-size: 1.5rem;
+    background-color: rgba(82, 55, 55, 0.25);
+    box-shadow: inset -1px 0 0 rgba(112, 81, 81, 0.25);
+    margin-right: 50px;
+  }
+
+
+  a:hover  {
+    transform: scale(1.12);
+    text-decoration: none;
+  }
+  .zoom:hover
+    {
+      transform: scale(1.5);
+  }
+  nav{
+    width: 100vw;
+    background-color: #D6EFFF;
+  }
+
+  @media only screen and (max-width: 900px) {
+.b
+{
+align-self: center;
+font-size: 42px;
+color: blue;
+
+}
+  }
+  @media only screen and (max-width: 350px) {
+
+.navbar-brand
+{
+  padding-top: .95rem;
+    padding-bottom: .95rem;
+    font-size: 1.1rem;
+    background-color: rgba(82, 55, 55, 0.25);
+    box-shadow: inset -1px 0 0 rgba(112, 81, 81, 0.25);
+}
+  }
+
+  @media only screen and (min-width: 1000px) and (max-width:1317px) {
+
+    
+  }
+
+  /* @media only screen and (min-width: 350) and (max-width:600px) {
+  .pad
+  {
+    padding: 0.4cm 0.4cm;
+  }
+} */
+.pad
+{
+  padding: 0.4cm 0.4cm;
+  font-weight: bold;
+  color: blue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+// .navbar-nav > li{
+//     margin-left:30px;
+//     margin-right:30px;
+//   }

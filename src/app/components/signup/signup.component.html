@@ -1,0 +1,163 @@
+<br/>
+<h1 style="text-align:center; color:rgb(217, 0, 224)">Please fill out your details and we will come back to you</h1>
+
+
+<div class="container">
+    <div class="row">
+
+<!-- mat form for signup page 
+adding() will call for performing the action-->
+<form class="example-form" [className]="'style2'" [formGroup]="userAddressValidations" (ngSubmit)="adding()" >
+    
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="col-lg-6 col-xs-12 col-sm-12">
+<mat-form-field class="example-full-width">
+      <!-- name field -->
+        <mat-label class="i1">Your Name*:</mat-label>
+      <input matInput placeholder="First Name" formControlName="name">
+      <!-- mat icon is being used for displaying the small icons for better understanding for the user -->
+      <mat-icon matSuffix>person_outline</mat-icon>
+      <mat-hint>User Name in characters only</mat-hint>
+      <!-- validation such as required minlength and maxlength too -->
+      <mat-error *ngIf="userAddressValidations.get('name').hasError('required')">
+        First Name is Required!
+      </mat-error>
+      <mat-error *ngIf="userAddressValidations.get('name').hasError('minlength')">
+        First Name should be atleast 4 characters long!
+      </mat-error>
+  
+      <mat-error *ngIf="userAddressValidations.get('name').hasError('maxlength')">
+        First Name can be atmax 20 characters long!
+      </mat-error>
+  
+      <mat-error *ngIf="userAddressValidations.get('name').hasError('pattern')">
+        First Name must contains charatcers only.
+      </mat-error>
+      </mat-form-field>
+    <br/>
+    <br/>
+      <!-- name field ends -->
+      <mat-form-field class="example-full-width">
+        <!--Last name field -->
+          <mat-label class="i1">Your Last Name*:</mat-label>
+        <input matInput placeholder="Last Name" formControlName="surname">
+        <!-- mat icon is being used for displaying the small icons for better understanding for the user -->
+        <mat-icon matSuffix>person_outline</mat-icon>
+        <mat-hint>Last Name in characters only</mat-hint>
+        <!-- validation such as required minlength and maxlength too -->
+        <mat-error *ngIf="userAddressValidations.get('surname').hasError('required')">
+          Last Name is Required!
+        </mat-error>
+        <mat-error *ngIf="userAddressValidations.get('surname').hasError('minlength')">
+          Last Name should be atleast 4 characters long!
+        </mat-error>
+    
+        <mat-error *ngIf="userAddressValidations.get('surname').hasError('maxlength')">
+          Last Name can be atmax 20 characters long!
+        </mat-error>
+    
+        <mat-error *ngIf="userAddressValidations.get('surname').hasError('pattern')">
+          Last Name must contains charatcers only.
+        </mat-error>
+    </mat-form-field>    
+    <!-- Last name field ends -->
+    <br/>
+    <br/>
+      <mat-form-field class="example-full-width">
+        <!-- email address field -->
+        <mat-label class="i1">UserName*:</mat-label>
+        <input matInput type="email" placeholder="Email Id" formControlName="email">
+        <mat-icon matSuffix>mail_outline</mat-icon>
+        <mat-hint>Input the fully qualified email address</mat-hint>
+        <mat-error *ngIf="userAddressValidations.get('email').hasError('required')">
+          Username ID is Required!
+        </mat-error>
+        <mat-error *ngIf="userAddressValidations.get('email').hasError('minlength')">
+          Username should be atleast 4 characters long!
+        </mat-error>
+    
+        <mat-error *ngIf="userAddressValidations.get('email').hasError('maxlength')">
+         Username can be atmax n characters long!
+        </mat-error>
+        <mat-error *ngIf="userAddressValidations.get('email').hasError('pattern')">  
+          Username must follow this pattern!
+        </mat-error>
+        <!-- email address field ends -->
+      </mat-form-field>
+      <br/>
+    <br/>
+      </div>
+      <div class="col-lg-6 col-xs-12 col-sm-12">
+      <mat-form-field class="example-full-width">
+        <!-- password field -->
+        <mat-label class="i1">Password*:</mat-label>
+        <input matInput  type="password" placeholder="Password" formControlName="password">
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-hint>Do not share to anyone</mat-hint>
+        <mat-error *ngIf="userAddressValidations.get('password').hasError('required')">
+          Password is Required!
+        </mat-error>
+        <mat-error *ngIf="userAddressValidations.get('password').hasError('minlength')">
+          Password should be atleast 8 characters long!
+        </mat-error>
+    
+        <mat-error *ngIf="userAddressValidations.get('password').hasError('maxlength')">
+          Password can be atmax 20 characters long!
+        </mat-error>
+    
+        <mat-error *ngIf="userAddressValidations.get('password').hasError('pattern')">
+        Password must follow this pattern!
+        </mat-error>
+        <!-- password field ends -->
+      </mat-form-field>
+      <br/>
+      <br/>
+      <mat-form-field>
+        <mat-label class="i1">Date of Birth*:</mat-label>
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" id="dateOfBirth" 
+            readonly (click)="picker.open()">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br/>
+    <br/>
+      </div>
+
+      <div class="col-md-11">
+        <div   class="input-group  input-field">
+            <mat-label class="i1">Country*:</mat-label>
+          
+            <select formControlName="securityQ" style="max-width: 40%;">
+
+                <option *ngFor="let question of securityQuestion" [ngValue]="question">
+                    {{ question }}
+                </option>
+            </select>
+            <hr>
+        </div>
+        <!-- Validation Messages -->
+        <div *ngIf="submitted && userAddressValidations.controls.securityQ.errors">
+            <div class="text-danger" *ngIf="userAddressValidations.controls.securityQ.errors.required">
+                Security Question is required ..!
+            </div>
+
+        </div>
+
+    </div>
+    <div class=" col-lg-12 col-sm-12 col-md-12 col-xs-12">
+        <img class="m" src="assets/images/signup.gif">
+    </div>
+    <br/>
+    <br/>
+<!-- save button to save the inputs -->
+      <button class="btn btn-success" type="submit" id="save">SAVE</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <!-- to reset the data being entered -->
+      <button class="btn btn-danger" type="reset">Cancel</button> &nbsp; &nbsp; &nbsp;
+      <!-- to navigate to the result page -->
+      <a class="btn btn-warning" routerLink="/home">Already have an Account</a> <br/><br/>
+  </form>
+  
+  </div>
+  </div>
+  
